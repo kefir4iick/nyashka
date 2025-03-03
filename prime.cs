@@ -37,7 +37,7 @@ namespace HelloWorld
         
         static bool millerrabin(int n, int k)
         {
-            if (n <= 1 || n == 4)
+            if (n <= 1 || n == 4 || (n % 2) == 0)
             {
                 return false;
             }
@@ -47,9 +47,35 @@ namespace HelloWorld
             }
             else
             {
-                return true;
+                int t = n - 1;
+                int s = 0;
+                while(t % 2 == 0)
+                {
+                    t = t / 2;
+                    s = s + 1;
+                }
+                Random rand_value = new Random();
+                int x = rand_value.Next(1, n);
+                if (gcd(x, n) != 1)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
                 
             }
+        }
+        static int gcd(int a, int b)
+        {
+            while(b != 0)
+            {
+                int c = b;
+                b = a % b;
+                a = c;
+            }
+            return a;
         }
     }
 }
