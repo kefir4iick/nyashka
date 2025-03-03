@@ -54,16 +54,44 @@ namespace HelloWorld
                     t = t / 2;
                     s = s + 1;
                 }
+                
                 Random rand_value = new Random();
-                int x = rand_value.Next(1, n);
-                if (gcd(x, n) != 1)
+                for (int i = 0; i < k; i++)
                 {
-                    return false;
+                    int x = rand_value.Next(2, n-2);
+                    if (gcd(x, n) != 1)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        int y = (int)Math.Pow(x, t) % n;
+                        if(y == 1 || y == n - 1)
+                        {
+                            continue;
+                        }
+                        
+                        for (int j = 0; j < s - 1; j++)
+                        {
+                            y = (int)Math.Pow(y, 2) % n;
+                            if (y == n - 1)
+                            {
+                                break;
+                            }
+                            else if (y == 1)
+                            {
+                                return false;
+                            }
+                        }
+
+                        if (y != n - 1)
+                        {    
+                            return false;
+                        }    
+                        
+                    }
                 }
-                else
-                {
-                    return true;
-                }
+                return true;
                 
             }
         }
