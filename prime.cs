@@ -22,18 +22,7 @@ namespace HelloWorld
         
         static int pick(int n)
         {
-            if (n < 100)
-            {
-                return 10;
-            }
-            else if (n < 1000)
-            {
-                return 20;
-            }
-            else
-            {
-                return 30;
-            }
+            return (int)Math.Log(n) * 3;
         }
         
         static bool millerrabin(int n, int k)
@@ -63,32 +52,29 @@ namespace HelloWorld
                     {
                         return false;
                     }
-                    else
+                    
+                    int y = horner(x, t, n);
+                    if(y == 1 || y == n - 1)
                     {
-                        int y = horner(x, t, n);
-                        if(y == 1 || y == n - 1)
+                        continue;
+                    }
+                    bool val = true;   
+                    for (int j = 0; j < s - 1; j++)
+                    {
+                        y = horner(y, 2, n);
+                        if (y == n - 1)
                         {
-                            continue;
+                            val = false;
+                            break;
                         }
-                        
-                        for (int j = 0; j < s - 1; j++)
+                        else if (y == 1)
                         {
-                            y = horner(y, 2, n);
-                            if (y == n - 1)
-                            {
-                                break;
-                            }
-                            else if (y == 1)
-                            {
-                                return false;
-                            }
-                        }
-
-                        if (y != n - 1)
-                        {    
                             return false;
-                        }    
-                        
+                        }
+                    }
+                    if (val)
+                    { 
+                        return false;
                     }
                 }
                 return true;
@@ -105,10 +91,10 @@ namespace HelloWorld
             {
                 if (b % 2 == 1)
                 {
-                    result = (result * a) % c;
+                    result = (int)((long)result * a % c);
                 }
 
-                a = (a * a) % c;
+                a = (int)((long)a * a % c);
                 b = b / 2;
             }
 
