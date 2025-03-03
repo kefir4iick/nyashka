@@ -65,7 +65,7 @@ namespace HelloWorld
                     }
                     else
                     {
-                        int y = (int)Math.Pow(x, t) % n;
+                        int y = horner(x, t, n);
                         if(y == 1 || y == n - 1)
                         {
                             continue;
@@ -73,7 +73,7 @@ namespace HelloWorld
                         
                         for (int j = 0; j < s - 1; j++)
                         {
-                            y = (int)Math.Pow(y, 2) % n;
+                            y = horner(y, 2, n);
                             if (y == n - 1)
                             {
                                 break;
@@ -95,6 +95,26 @@ namespace HelloWorld
                 
             }
         }
+        
+        static int horner(int a, int b, int c)
+        {
+            int result = 1;
+            a = a % c;
+
+            while (b > 0)
+            {
+                if (b % 2 == 1)
+                {
+                    result = (result * a) % c;
+                }
+
+                a = (a * a) % c;
+                b = b / 2;
+            }
+
+            return result;
+        }
+        
         static int gcd(int a, int b)
         {
             while(b != 0)
