@@ -4,6 +4,7 @@ namespace HelloWorld
 {
     class Program
     {
+        static Random rand_value = new Random();
         static void Main()
         {
             Console.WriteLine("Enter number: ");
@@ -37,11 +38,11 @@ namespace HelloWorld
         
         static bool millerrabin(int n, int k)
         {
-            if (n <= 1 || n == 4 || (n % 2) == 0)
+            if (n <= 1 || (n % 2) == 0)
             {
                 return false;
             }
-            else if (n <= 3)
+            else if (n == 2 || n == 3)
             {
                 return true;
             }
@@ -55,7 +56,6 @@ namespace HelloWorld
                     s = s + 1;
                 }
                 
-                Random rand_value = new Random();
                 for (int i = 0; i < k; i++)
                 {
                     int x = rand_value.Next(2, n-2);
