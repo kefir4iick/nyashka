@@ -9,6 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../Prime/Prime.csproj" />
+    <ProjectReference Include="../prime/prime.csproj" />
   </ItemGroup>
 </Project>
