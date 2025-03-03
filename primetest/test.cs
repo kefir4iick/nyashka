@@ -26,9 +26,9 @@ namespace Program.Tests
         [Fact]
         public void TestHorner()
         {
-            Assert.Equal(4, MillerRabin.horner(2, 2, 5));
-            Assert.Equal(9, MillerRabin.horner(3, 2, 10));
-            Assert.Equal(16, MillerRabin.horner(2, 4, 20));
+            Assert.Equal(4, Prime.horner(2, 2, 5));
+            Assert.Equal(9, Prime.horner(3, 2, 10));
+            Assert.Equal(16, Prime.horner(2, 4, 20));
         }
         
         [Fact]
