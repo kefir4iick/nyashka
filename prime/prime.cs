@@ -28,13 +28,13 @@ namespace Program
 
         public static bool millerrabin(int n, int k)
         {
-            if (n <= 1 || (n % 2) == 0)
-            {
-                return false;
-            }
-            else if (n == 2 || n == 3)
+            if (n == 2 || n == 3)
             {
                 return true;
+            }
+            else if (n <= 1 || (n % 2) == 0)
+            {
+                return false;
             }
             else
             {
