@@ -8,19 +8,19 @@ namespace Program.Tests
         [Fact]
         public void TestPrime()
         {
-            Assert.True(Prime.millerrabin(2, 1));
-            Assert.True(Prime.millerrabin(3, 1));
-            Assert.True(Prime.millerrabin(5, 10));
-            Assert.True(Prime.millerrabin(356869, 54));
+            Assert.True(Prime.millerrabin(2, Prime.pick(2)));
+            Assert.True(Prime.millerrabin(3, Prime.pick(3)));
+            Assert.True(Prime.millerrabin(5, Prime.pick(5)));
+            Assert.True(Prime.millerrabin(356869, Prime.pick(356869)));
         }
 
         [Fact]
         public void TestComposite()
         {
-            Assert.False(Prime.millerrabin(1, 10));
-            Assert.False(Prime.millerrabin(4, 10));
-            Assert.False(Prime.millerrabin(100, 18));
-            Assert.False(Prime.millerrabin(221, 25)); 
+            Assert.False(Prime.millerrabin(1, Prime.pick(1)));
+            Assert.False(Prime.millerrabin(4, Prime.pick(4)));
+            Assert.False(Prime.millerrabin(100, Prime.pick(100)));
+            Assert.False(Prime.millerrabin(221, Prime.pick(221))); 
         }
 
         [Fact]
