@@ -6,6 +6,34 @@ namespace Program.Tests
     public class Tests
     {
         [Fact]
+        public void TestStderr()
+        {
+            var input = "rmyjnjyrs";
+            var str = "invalid input";
+            var con = new StringWriter();
+            Console.SetError(con);
+            Console.SetIn(new StringReader(input));
+
+            Prime.Main();
+            
+            Assert.Contains(str, con.ToString());
+        }
+
+        [Fact]
+        public void TestStdout()
+        {
+            var input = "13";
+            var str = "is prime";
+            var con = new StringWriter();
+            Console.SetOut(con);
+            Console.SetIn(new StringReader(input));
+            
+            Prime.Main();
+
+            Assert.Contains(str, con.ToString());
+        }
+        
+        [Fact]
         public void TestRestriction()
         {
             Assert.False(Prime.check("jwurtugreqg", out int num1));
