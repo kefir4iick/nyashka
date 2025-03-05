@@ -9,7 +9,14 @@ namespace Program
         public static void Main()
         {
             Console.WriteLine("Enter number: ");
-            int n = Convert.ToInt32(Console.ReadLine());
+            string stdin = Console.ReadLine();
+
+            if (!check(stdin, out int n))
+            {
+                Console.Error.WriteLine("invalid input");
+                Environment.Exit(1); 
+            }
+
             int k = pick(n);
             if (millerrabin(n, k))
             {
@@ -21,6 +28,15 @@ namespace Program
             }
         }
 
+        public static bool check(string stdin, out int n)
+        {
+            if (int.TryParse(stdin, out n) && n > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public static int pick(int n)
         {
             return (int)Math.Log(n) * 3;
@@ -28,13 +44,13 @@ namespace Program
 
         public static bool millerrabin(int n, int k)
         {
-            if (n <= 1 || (n % 2) == 0)
-            {
-                return false;
-            }
-            else if (n == 2 || n == 3)
+            if (n == 2 || n == 3)
             {
                 return true;
+            }
+            else if (n <= 1 || (n % 2) == 0)
+            {
+                return false;
             }
             else
             {
