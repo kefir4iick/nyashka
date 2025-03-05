@@ -6,6 +6,13 @@ namespace Program.Tests
     public class Tests
     {
         [Fact]
+        public void TestRestriction()
+        {
+            Assert.False(Prime.check("jwurtugreqg", out int num));
+            Assert.False(Prime.check(-5, out int num));
+        }
+        
+        [Fact]
         public void TestPrime()
         {
             Assert.True(Prime.millerrabin(2, 1));
