@@ -9,7 +9,7 @@ namespace Program.Tests
         public void TestRestriction()
         {
             Assert.False(Prime.check("jwurtugreqg", out int num1));
-            Assert.False(Prime.check(-5, out int num2));
+            Assert.False(Prime.check("-5", out int num2));
         }
         
         [Fact]
