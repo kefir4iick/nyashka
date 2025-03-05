@@ -16,7 +16,7 @@ namespace Program.Tests
             Console.SetError(con);
             Console.SetIn(new StringReader(input));
 
-            Prime.Main();
+            var ex = Assert.Throws<ArgumentException>(() => Prime.Main());
             
             Assert.Contains(str, con.ToString());
         }
