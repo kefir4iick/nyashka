@@ -6,7 +6,7 @@ namespace Program
     {
         public static Random rand_value = new Random();
 
-        public static void Main()
+        public static int Main()
         {
             Console.WriteLine("Enter number: ");
             string stdin = Console.ReadLine();
@@ -14,7 +14,7 @@ namespace Program
             if (!check(stdin, out int n))
             {
                 Console.Error.WriteLine("invalid input");
-                Environment.Exit(1); 
+                return 1; 
             }
 
             int k = pick(n);
@@ -26,6 +26,7 @@ namespace Program
             {
                 Console.WriteLine("isn't prime");
             }
+            return 0;
         }
 
         public static bool check(string stdin, out int n)
