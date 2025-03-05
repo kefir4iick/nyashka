@@ -16,13 +16,14 @@ namespace Program.Tests
             Console.SetError(con);
             Console.SetIn(new StringReader(input));
 
-            var ex = Assert.Throws<ArgumentException>(() => Prime.Main());
+            int exit_code = Prime.Main(); 
             
+            Assert.Equal(1, exit_code); 
             Assert.Contains(str, con.ToString());
         }
 
         [Fact]
-        public void TestStdout()
+        public void TestStdout_1()
         {
             var input = "13";
             var str = "is prime";
@@ -30,9 +31,24 @@ namespace Program.Tests
             Console.SetOut(con);
             Console.SetIn(new StringReader(input));
             
-            Prime.Main();
+            int exit_code = Prime.Main(); 
+            
+            Assert.Equal(0, exit_code); 
+            Assert.Contains(str, con.ToString()); 
+        }
 
-            Assert.Contains(str, con.ToString());
+        public void TestStdout_2()
+        {
+            var input = "6";
+            var str = "isn't prime";
+            var con = new StringWriter();
+            Console.SetOut(con);
+            Console.SetIn(new StringReader(input));
+            
+            int exit_code = Prime.Main(); 
+            
+            Assert.Equal(0, exit_code); 
+            Assert.Contains(str, con.ToString()); 
         }
         
         [Fact]
