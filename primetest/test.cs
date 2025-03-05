@@ -37,6 +37,7 @@ namespace Program.Tests
             Assert.Contains(str, con.ToString()); 
         }
 
+        [Fact]
         public void TestStdout_2()
         {
             var input = "6";
